@@ -12,9 +12,9 @@ on:
 jobs:
   build:
 
-    vruns-on: windows-latest
-
-   name: Build Pipeline
+    runs-on: windows-latest
+    
+name: Build Pipeline
 
 on:
   push:
