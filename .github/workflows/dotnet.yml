@@ -1,0 +1,43 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    vruns-on: windows-latest
+
+   name: Build Pipeline
+
+on:
+  push:
+    branches: [ main ] # Trigger the pipeline only on push to main branch
+  pull_request:
+    branches: [ main ] # Trigger the pipeline only on pull requests to main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Specify the operating system to run the job on
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2 # Check out the code from the repository
+
+    - name: Install dependencies
+      run: npm install # Install the dependencies required to build the project
+
+    - name: Build project
+      run: npm run build # Build the project using the specified command
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2 # Upload the build artifacts
+      with:
+        name: my-app-artifacts
+        path: path/to/build # Specify the path to the build artifacts
